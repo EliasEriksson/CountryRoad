@@ -1,7 +1,7 @@
 from typing import *
 
 if TYPE_CHECKING:
-    from .map import Road, Tile
+    from .map import Road, Map
 
 from math import sqrt
 
@@ -10,13 +10,13 @@ class Dijkstra:
     class Edge:
         def __init__(self, distance: float, predecessor: Optional[Road]):
             self.distance: float = distance
-            self.predecessor: Optional[Tile] = predecessor
+            self.predecessor: Optional[Map.Point] = predecessor
 
         def __repr__(self):
             return f"{self.__class__.__name__}({self.distance}, {self.predecessor})"
 
     @classmethod
-    def find(cls, source: Road, goal: Tile):
+    def find(cls, source: Road, goal: Map.Point):
         visited: Dict[Road: cls.Edge] = {source: cls.Edge(0, None)}
         queue: Dict[Road: cls.Edge] = visited.copy()
 
