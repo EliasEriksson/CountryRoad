@@ -151,7 +151,9 @@ class Road(Map.Point):
 
 
 class Car(Map.Object):
-    pass
+    def __init__(self, pos: Tuple[int, int],  width: float, ):
+        super(Car, self).__init__(pos)
+        self.width = width
 
 
 def generate_3x3(filepath: Path):
