@@ -49,7 +49,7 @@ class Map:
 
             for tile in save["tiles"]:
                 if tile["class"] in self.Tiles.classes:
-                    self.Tiles.classes[tile["class"]].load(**tile)
+                    self.Tiles.classes[tile["class"]].load(tile)
 
         def save(self, path: Path):
             tiles = []
@@ -88,7 +88,7 @@ class Tile(metaclass=Map.Tiles):
     def __hash__(self):
         return hash(self.pos)
 
-    def load(self, *_, **kwargs):
+    def load(self, *_, **__):
         raise NotImplementedError()
 
     def save(self, *_, **__):
@@ -97,4 +97,3 @@ class Tile(metaclass=Map.Tiles):
 
 class Object(metaclass=Map.Objects):
     map = Map()
-
